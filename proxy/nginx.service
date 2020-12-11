@@ -1,0 +1,21 @@
+[Unit]
+Description=A high performance web server and a reverse proxy server
+Documentation=man:nginx(8)
+After=livejack.service network.target nss-lookup.target
+
+[Service]
+Type=forking
+Restart=always
+RestartSec=1
+WorkingDirectory=%h/livejack/proxy
+PIDFile=%h/livejack/proxy/nginx/nginx.pid
+ExecStartPre=/usr/sbin/nginx -t -q -p nginx -c nginx.conf -g 'daemon on; master_process on;'
+ExecStart=/usr/sbin/nginx -p nginx -c nginx.conf -g 'daemon on; master_process on;'
+ExecReload=/usr/sbin/nginx -p nginx -c nginx.conf -g 'daemon on; master_process on;' -s reload
+ExecStop=-/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile nginx.pid
+TimeoutStopSec=5
+KillMode=mixed
+
+[Install]
+WantedBy=default.target
+

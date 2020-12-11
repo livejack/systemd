@@ -1,0 +1,18 @@
+[Unit]
+Description=%p
+PartOf=%p.service
+After=postgresql.service
+
+[Service]
+WorkingDirectory=%h/livejack/server
+ExecStart=node app.js
+Restart=always
+RestartSec=5
+Environment=HOME=%h
+Environment=NODE_ENV=production
+Environment=VIPS_WARNING=0
+Environment=GIGACAGE_ENABLED=no
+
+[Install]
+WantedBy=default.target
+

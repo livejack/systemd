@@ -1,0 +1,7 @@
+[Unit]
+Description=Restart livejack service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/systemctl --user restart livejack.service
+

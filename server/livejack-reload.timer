@@ -1,0 +1,9 @@
+[Unit]
+Description=Reload leaking livejack daily
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target

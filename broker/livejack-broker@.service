@@ -1,0 +1,14 @@
+[Unit]
+Description=%p %i
+PartOf=%p.service
+ReloadPropagatedFrom=%p.service
+Before=%p.service
+
+[Service]
+ExecStart=/bin/sh $SITE/app.js %i
+Restart=always
+Environment=NODE_ENV=$NODE_ENV
+
+[Install]
+WantedBy=default.target
+
