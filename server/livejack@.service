@@ -1,5 +1,5 @@
 [Unit]
-Description=%p
+Description=%p %i
 PartOf=%p.service
 After=postgresql.service
 OnFailure=systemd-failure-email.service
@@ -10,7 +10,7 @@ ExecStart=node app.js
 Restart=always
 RestartSec=5
 Environment=HOME=%h
-Environment=NODE_ENV=production
+Environment=NODE_ENV=%i
 Environment=VIPS_WARNING=0
 Environment=GIGACAGE_ENABLED=no
 
