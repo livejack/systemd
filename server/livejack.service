@@ -2,6 +2,7 @@
 Description=%p
 PartOf=%p.service
 After=postgresql.service
+OnFailure=systemd-failure-email.service
 
 [Service]
 WorkingDirectory=%h/livejack/server
