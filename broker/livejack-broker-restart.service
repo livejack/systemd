@@ -3,7 +3,7 @@ Description=Restart livejack-broker-$NODE_ENV service
 
 [Service]
 Type=oneshot
-ExecStart=/bin/systemctl --user restart livejack-broker-$NODE_ENV.service
+ExecStart=/bin/systemctl --user restart livejack-broker-$NODE_ENV.target
 
 [Install]
 WantedBy=default.target

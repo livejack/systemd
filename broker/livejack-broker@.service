@@ -1,14 +1,12 @@
 [Unit]
 Description=%p %i
-PartOf=%p.service
-ReloadPropagatedFrom=%p.service
-Before=%p.service
+PartOf=%p.target
 
 [Service]
-ExecStart=/bin/sh $SITE/app.js %i
+ExecStart=/bin/sh %h/public_nodejs/broker/app.js %i
 Restart=always
 Environment=NODE_ENV=$NODE_ENV
 
 [Install]
-WantedBy=default.target
+WantedBy=livejack-broker-$NODE_ENV.target
 
