@@ -5,7 +5,7 @@ After=postgresql.service
 OnFailure=systemd-failure-email.service
 
 [Service]
-WorkingDirectory=%h/livejack/server
+WorkingDirectory=%h/livejack/server/%i
 ExecStart=node app.js
 Restart=always
 RestartSec=5
